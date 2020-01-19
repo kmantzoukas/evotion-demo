@@ -68,17 +68,56 @@ When all the project have been built successfully, under the __target/scala-2.11
 In our use case, the Big Data analytics services are not executed manually but through Spark's REST API. The submission of the jobs is triggered by means of invoking the REST API that is described in the next section.
 
 # REST API Services
-The data extraction is implemented as a Spark application that loads the data from HBASE and stores it on HDFS. The data is then used for the generation of the Big Data analytics.
+The REST API is used as an interface to interact with the Spark cluster. It is used from the Evotion dashboard to initiate the execution of the Big Data analytics jobs and present the results to the users.
 
+### Build
+To build the REST API project execute the following commands:
+```sh
+$ cd evotion-rest-api
+$ mvn clean package
+```
+### Execute
+To execute the REST API and make it expose its services execute the following command while being in the evotion-rest-api folder:
+```sh
+$ mvn spring-boot:run
+```
+
+A comprehensive list of all the services and parameters required is layed out in the list below.
 
 ##### Auditory Training Analytics
- - http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/auditory-training
+ - __Get analytics for all patients__
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/auditory-training
+ - __Get analytics for all patients where language is *el* or *en*__
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/auditory-training?lang=en
+ - __Get analytics for a comma-separated list of patient ids__
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/auditory-training?ids=IN146523,IN150702,IN161564
 
 ##### Digit Recall Test Analytics
-___
  - __Get analytics for all patients__
- http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/digit-recall-test
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/digit-recall-test
  - __Get analytics for all patients where language is *el* or *en*__
- http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/digit-recall-test?lang=en
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/digit-recall-test?lang=en
  - __Get analytics for a comma-separated list of patient ids__
- http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/digit-recall-test?ids=IN146523,IN150702,IN161564
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/digit-recall-test?ids=IN146523,IN150702,IN161564
+
+##### Usage Analytics
+ - __Get analytics for all patients for a specific period. Valid options are *PER_HOUR, PER_6HOURS, PER_DAY, PER_WEEK, PER_MONTH*__
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/usage?period=PER_MONTH
+ - __Get analytics for a specific period and for a comma-separated list of patient ids__
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/usage?period=PER_MONTH&ids=IN146688,IN146410,IN146409
+
+##### Speech In Babble Analytics
+ - __Get analytics for all patients__
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/speech-in-babble-test
+ - __Get analytics for all patients where language is *el* or *en*__
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/speech-in-babble-test?lang=en
+ - __Get analytics for a comma-separated list of patient ids__
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/speech-in-babble-test?ids=IN146523,IN150702,IN161564
+
+##### User PTA Test Result Analytics
+ - __Get analytics for all patients__
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/user-pta-test-results
+ - __Get analytics for a specific period and for a comma-separated list of patient ids__
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/user-pta-test-results&ids=IN146688,IN146410,IN146409
+
+> Note that the REST API is deployed on the soi-vm-test1.nsqdc.city.ac.uk server and therefore it is essential to be logged in to the City VPN. Finally, the REST API can be deployed on any computer that has access to the soi-vm-test1.nsqdc.city.ac.uk machine. This is due to the fact that it was designed with that in mind to allow service execution from any location, even outside City's servers.
