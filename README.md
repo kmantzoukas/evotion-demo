@@ -86,38 +86,38 @@ A comprehensive list of all the services and parameters required is layed out in
 
 ##### Auditory Training Analytics
  - __Get analytics for all patients__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/auditory-training
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/auditory-training
  - __Get analytics for all patients where language is *el* or *en*__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/auditory-training?lang=en
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/auditory-training?lang=en
  - __Get analytics for a comma-separated list of patient ids__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/auditory-training?ids=IN146523,IN150702,IN161564
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/auditory-training?ids=IN146523,IN150702,IN161564
 
 ##### Digit Recall Test Analytics
  - __Get analytics for all patients__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/digit-recall-test
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/digit-recall-test
  - __Get analytics for all patients where language is *el* or *en*__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/digit-recall-test?lang=en
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/digit-recall-test?lang=en
  - __Get analytics for a comma-separated list of patient ids__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/digit-recall-test?ids=IN146523,IN150702,IN161564
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/digit-recall-test?ids=IN146523,IN150702,IN161564
 
 ##### Usage Analytics
  - __Get analytics for all patients for a specific period. Valid options are *PER_HOUR, PER_6HOURS, PER_DAY, PER_WEEK, PER_MONTH*__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/usage?period=PER_MONTH
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/usage?period=PER_MONTH
  - __Get analytics for a specific period and for a comma-separated list of patient ids__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/usage?period=PER_MONTH&ids=IN146688,IN146410,IN146409
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/usage?period=PER_MONTH&ids=IN146688,IN146410,IN146409
 
 ##### Speech In Babble Analytics
  - __Get analytics for all patients__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/speech-in-babble-test
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/speech-in-babble-test
  - __Get analytics for all patients where language is *el* or *en*__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/speech-in-babble-test?lang=en
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/speech-in-babble-test?lang=en
  - __Get analytics for a comma-separated list of patient ids__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/speech-in-babble-test?ids=IN146523,IN150702,IN161564
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/speech-in-babble-test?ids=IN146523,IN150702,IN161564
 
 ##### User PTA Test Result Analytics
  - __Get analytics for all patients__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/user-pta-test-results
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/user-pta-test-results
  - __Get analytics for a specific period and for a comma-separated list of patient ids__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk/:8090/evotion/rest/api/analytics/user-pta-test-results&ids=IN146688,IN146410,IN146409
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/user-pta-test-results&ids=IN146688,IN146410,IN146409
 
 > Note that the REST API is deployed on the soi-vm-test1.nsqdc.city.ac.uk server and therefore it is essential to be logged in to the City VPN to invoke the REST functions. Finally, the REST API can be deployed on any computer that has access to the soi-vm-test1.nsqdc.city.ac.uk machine. This is due to the fact that it was designed with that in mind to allow service execution from any location, even outside City's servers.
