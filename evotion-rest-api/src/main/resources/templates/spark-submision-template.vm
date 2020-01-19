@@ -1,0 +1,18 @@
+{
+    "action" : "CreateSubmissionRequest",
+    "appArgs" : [#foreach($argument in ${spark-arguments})#if(${velocityCount} == 1)"${argument}"#else,"${argument}"#end #end],
+    "appResource" : "hdfs://${hdfs-namenode-host}:${hdfs-namenode-port}/evotion-services/${spark-service-jar}_2.11-0.0.1-SNAPSHOT.jar",
+    "clientSparkVersion" : "1.5.0",
+    "environmentVariables" : {
+        "SPARK_ENV_LOADED" : "1"
+    },
+    "mainClass" : "EvotionAnalyticsService",
+    "sparkProperties" : {
+        "spark.jars" : "hdfs://${hdfs-namenode-host}:${hdfs-namenode-port}/evotion-services/${spark-service-jar}_2.11-0.0.1-SNAPSHOT.jar,hdfs://${hdfs-namenode-host}:${hdfs-namenode-port}/evotion-services/libs/mysql-connector-java-8.0.18.jar",
+        "spark.driver.supervise" : "true",
+        "spark.app.name" : "${spark-service-name}",
+        "spark.eventLog.enabled": "true",
+        "spark.submit.deployMode" : "cluster",
+        "spark.master" : "spark://${spark-master-host}:${spark-master-port}"
+    }
+}
