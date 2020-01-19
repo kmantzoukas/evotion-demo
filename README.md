@@ -90,7 +90,7 @@ A comprehensive list of all the services and parameters required is layed out in
  - __Get analytics for all patients where language is *el* or *en*__
  e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/auditory-training?lang=en
  - __Get analytics for a comma-separated list of patient ids__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/auditory-training?ids=IN146523,IN150702,IN161564
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/auditory-training?ids=IN156252,IN160808,IN160987
 
 ##### Digit Recall Test Analytics
  - __Get analytics for all patients__
@@ -118,6 +118,6 @@ A comprehensive list of all the services and parameters required is layed out in
  - __Get analytics for all patients__
  e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/user-pta-test-results
  - __Get analytics for a specific period and for a comma-separated list of patient ids__
- e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/user-pta-test-results&ids=IN146688,IN146410,IN146409
+ e.g. http://soi-vm-test1.nsqdc.city.ac.uk:8090/evotion/rest/api/analytics/user-pta-test-results?ids=IN146688,IN146410,IN146409
 
 > Note that the REST API is deployed on the soi-vm-test1.nsqdc.city.ac.uk server and therefore it is essential to be logged in to the City VPN to invoke the REST functions. Finally, the REST API can be deployed on any computer that has access to the soi-vm-test1.nsqdc.city.ac.uk machine. This is due to the fact that it was designed with that in mind to allow service execution from any location, even outside City's servers.
