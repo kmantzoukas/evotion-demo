@@ -4,8 +4,6 @@ import java.util
 import com.google.gson.Gson
 import org.apache.spark.{SparkConf, SparkContext}
 
-import scala.annotation.switch
-
 object EvotionAnalyticsService {
 
   val host = "10.207.1.102"
@@ -19,8 +17,8 @@ object EvotionAnalyticsService {
     val data = sc.textFile(s"hdfs://$host:$port/evotion_data/user_pta_test_result").map(line =>{
       val columns = line.split('|')
       val patientId = columns(0).toString
-      val haPtaResult = columns(4).toFloat
-      (patientId, haPtaResult)
+      val haPtaData = columns(3).toString.split(",")(0).toFloat
+      (patientId, haPtaData)
     })
 
     var results = Array[(String, Float, Float, Float,Float, Int)]();
