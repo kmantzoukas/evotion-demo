@@ -63,7 +63,9 @@ object EvotionAnalyticsService {
       Class.forName("com.mysql.cj.jdbc.Driver")
       connection = DriverManager.getConnection("jdbc:mysql://10.207.1.102:3306/evotion", "root", "root")
       val statement = connection.createStatement
-      statement.executeUpdate("INSERT INTO evotion.results(requestId,result) VALUES('" + args(0) + "','" + (new Gson).toJson(buf) + "')")
+      val requestId = args(0)
+      val json = (new Gson).toJson(buf)
+      statement.executeUpdate(s"INSERT INTO evotion.results(requestId,result) VALUES('${requestId}','${json}')")
     } catch {
       case e: Exception => e.printStackTrace
     }
