@@ -270,6 +270,50 @@ object ExportHBaseTableService {
               systemTime).toString
           }).saveAsTextFile("hdfs://10.207.1.102:54310/evotion_data/" + table.toLowerCase)
         }
+        case "TTSNIHL_TEST_RESULT" => {
+
+          val ttsnihl_test_result: RDD[Map[String, AnyRef]] = sc.phoenixTableAsRDD(
+            "TTSNIHL_TEST_RESULT",
+            Seq("PATIENT_ID",
+              "RECORD_DATE",
+              "TYPE",
+              "LOCATION",
+              "START_TIME",
+              "END_TIME",
+              "SYSTEM_TIME"),
+            zkUrl = Some("localhost:2181"))
+
+          case class TtsnihlTestResult(
+                                             patientId:String,
+                                             recordDate:Long,
+                                             typ3: Int,
+                                             location:String,
+                                             startTime: Long,
+                                             endTime: Long,
+                                             systemTime:Long){
+            override def toString =
+              s"$patientId|$recordDate|$typ3|$location|$startTime|$endTime|$systemTime"
+          }
+
+
+          ttsnihl_test_result.map(item => {
+            val patientId = item("PATIENT_ID").asInstanceOf[String]
+            val recordDate = item("RECORD_DATE").asInstanceOf[Timestamp].getTime
+            val typ3 = item("TYPE").asInstanceOf[Short]
+            val location = item("LOCATION").asInstanceOf[Array[String]]
+            val startTime = item("START_TIME").asInstanceOf[Timestamp].getTime
+            val endTime = item("END_TIME").asInstanceOf[Timestamp].getTime
+            val systemTime = item("SYSTEM_TIME").asInstanceOf[Timestamp].getTime
+
+            TtsnihlTestResult(patientId,
+              recordDate,
+              typ3,
+              location.mkString(","),
+              startTime,
+              endTime,
+              systemTime).toString
+          }).saveAsTextFile("hdfs://10.207.1.102:54310/evotion_data/" + table.toLowerCase)
+        }
         case "TABLE_DS11_1_OUTPUT" => {
           val table_ds11_1_output: RDD[Map[String, AnyRef]] = sc.phoenixTableAsRDD(
             "TABLE_DS11_1_OUTPUT",
