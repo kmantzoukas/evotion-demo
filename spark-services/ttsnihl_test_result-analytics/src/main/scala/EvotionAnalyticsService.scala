@@ -76,7 +76,7 @@ object EvotionAnalyticsService {
     val count = tuple._2.size
     val min = tuple._2.min / 1000
     val max = tuple._2.max / 1000
-    val diff = (max / 1000) - (min / 1000)
+    val diff = max - min
 
     (tuple._1, (sum / count), min, max, diff, count)
   }
