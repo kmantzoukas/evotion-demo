@@ -74,4 +74,14 @@ public class AnalyticsController {
                 "speech-in-babble-test-analytics",
                 "evotion-speech-in-babble-test-analytics", req);
     }
+
+    @RequestMapping(value = "/ttsnihl-test-result", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getTtsnihlTestResultAnalyticsForPatients(
+            @RequestParam(name = "ids", required = false) String ids, HttpServletRequest req)
+            throws IOException, InterruptedException {
+
+        return Utilities.runSparkJob(
+                "ttsnihl-test-result-analytics",
+                "evotion-ttsnihl-test-result-analytics", req);
+    }
 }
