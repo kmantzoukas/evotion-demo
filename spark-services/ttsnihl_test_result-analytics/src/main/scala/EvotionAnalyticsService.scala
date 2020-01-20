@@ -72,11 +72,11 @@ object EvotionAnalyticsService {
   }
 
   private def mapResults(tuple: (String, Iterable[Long])) = {
-    val sum = tuple._2.sum
+    val sum = tuple._2.sum / 1000
     val count = tuple._2.size
-    val min = tuple._2.min
-    val max = tuple._2.max
-    val diff = max - min
+    val min = tuple._2.min / 1000
+    val max = tuple._2.max / 1000
+    val diff = (max / 1000) - (min / 1000)
 
     (tuple._1, (sum / count), min, max, diff, count)
   }
